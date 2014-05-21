@@ -11,7 +11,7 @@ include_once(BASEDIR . '/view/mods/admin-header.php');
             <th>名称</th>
             <th>标识符</th>
             <th>排序</th>
-            <th>固定URL</th>
+            <!-- <th>固定URL</th> -->
             <th>操作</th>
         </tr>
         <?foreach($ci->navs as $index=>$nav):?>
@@ -20,9 +20,9 @@ include_once(BASEDIR . '/view/mods/admin-header.php');
             <td><?=$nav['name']?></td>
             <td><?=$nav['category']?></td>
             <td><?=$nav['sort']?></td>
-            <td><?=$nav['url']?></td>
+            <!-- <td><?=$nav['url']?></td> -->
             <td>
-                <a href="<?=BASEURL?>?a=add&c=modify&category=<?=$nav['category']?>">编辑</a>
+                <a href="<?=BASEURL?>?a=admin&c=modify&category=<?=$nav['category']?>">编辑</a>
                 <a href="<?=BASEURL?>?a=tree&category=<?=$nav['category']?>">目录结构</a>
             </td>
         </tr>

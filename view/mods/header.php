@@ -11,10 +11,11 @@
         <header>
             <nav class="gnav">
                 <div class="">
+                    <a href="/" class="nav-item">首页</a>
                     <?foreach($ci->navs as $nav):?>
                         <a href="<?=BASEURL?>?c=<?=$nav['url']?>" class="nav-item <?=$nav_active === $nav['category'] ? 'active' : ''?>"><?=$nav['name']?></a>
                     <?endforeach?>
-                    <a href="<?=BASEURL?>?a=admin" class="nav-item pull-right <?=$nav_active === 'admin' ? 'active' : ''?>"> &gt; 管理</a>
+                    <!-- <a href="<?=BASEURL?>?a=admin" class="nav-item pull-right <?=$nav_active === 'admin' ? 'active' : ''?>"> &gt; 管理</a> -->
                 </div>
             </nav>
 

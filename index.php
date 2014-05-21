@@ -6,6 +6,9 @@ $ci = new Controller;
 
 $action = _g('a', 'markdown');
 switch($action){
+    case 'add':
+        go_admin();
+    break;
     case 'markdown':
         go_markdown();
     break;
@@ -333,6 +336,15 @@ function go_admin(){
             include_once('view/admin/pwd.php');
         break;
         case 'add';
+            $nav_active = 'add';
+            $act = _g('act');
+            switch($act){
+                // case 't1': go_add_tree1(); break;
+                // case 't2': go_add_tree2(); break;
+                default: go_add($navs);
+            }
+        break;
+        case 'modify';
             $nav_active = 'add';
             $act = _g('act');
             switch($act){
