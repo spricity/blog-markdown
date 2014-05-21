@@ -2,10 +2,10 @@
 define( 'DS' , DIRECTORY_SEPARATOR);
 define( 'PS' , PATH_SEPARATOR);
 define('BASEDIR', str_replace(DS.'lib','',dirname(__FILE__)));
-define('DIR_DOCS', BASEDIR.DS.'docs' );
 $script_name = $_SERVER['SCRIPT_NAME'];
 $script_name = str_replace('index.php', '', $script_name);
 define('BASEURL', 'http://' . $_SERVER['HTTP_HOST'] . $script_name);
+
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +47,13 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 include_once('controller.php');
 include_once('session.php');
 include_once('function.php');
+
+$config = read_file(BASEDIR . DS . 'config.json');
+$config = json_decode($config);
+
+if($config->DOC_DIR){
+    $path = realpath($config->DOC_DIR);
+    define('DIR_DOCS', $path);
+}else{
+    define('DIR_DOCS', BASEDIR.DS.'docs' );
+}

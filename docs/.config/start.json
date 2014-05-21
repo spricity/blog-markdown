@@ -1,1 +1,46 @@
-{"name":"\u8d77\u6b65","category":"start","sort":"1","url":"start-index","menu":[{"sort":"1","name":"\u8d77\u6b65","path":["start\/guid.md"],"url":"start-guid","child":[{"name":"\u5b89\u88c5\u65b9\u6cd5","path":["start\/install.md"],"url":"start-install"},{"name":"\u914d\u7f6e\u6587\u4ef6\u8bf4\u660e","path":["start\/config.md"],"url":"start-config"}]},{"sort":"2","name":"mo\u5e73\u53f0","path":["start\/2014-05-04-19-49-50__94c4fcf5f4c3237b273d81369cd418ad.md"],"url":"start-item-2","child":[{"name":"\u6570\u636e\u7edf\u8ba1\u65b9\u5f0f","path":["start\/2014-05-04-19-49-50__225a698be8f1ab26293e0e589617b18b.md"],"url":"start-item-2-child-1"}]},{"sort":"3","name":"aaa","path":["start\/2014-05-05-23-29-09__ba6eecb073f03531b7184152f5babc5e.md"],"url":"start-item-21399303768","child":[]}]}
+{
+    "category": "start",
+    "sort": 1,
+    "name": "起步",
+    "menu": [
+        {
+            "sort": 1,
+            "name": "起步准备",
+            "path": ["start/standard.md"],
+            "url" : "start-assets",
+            "child": [
+                {
+                    "sort": 1,
+                    "name": "1、assets目录规范及webx配置",
+                    "path": "start/standard.md",
+                    "url" : "start-standard"
+                },
+                {
+                    "sort": 2,
+                    "name": "2、assets文件发布",
+                    "path": "start/publish.md",
+                    "url": "start-publish"
+                }
+            ]
+        },
+        {
+            "sort": 2,
+            "name": "页面开发指引",
+            "path": ["start/scaffolding.md"],
+            "child": [
+                {
+                    "sort": 1,
+                    "name": "使用脚手架：快速创建一个前端页面",
+                    "path": "start/scaffolding.md",
+                    "url": "start-scaffolding"
+                },
+                {
+                    "sort": 2,
+                    "name": "如何使用DPL",
+                    "path": "start/usedpl.md",
+                    "url": "start-usedpl"
+                }
+            ]
+        }
+    ]
+}
