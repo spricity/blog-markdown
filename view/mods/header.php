@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="<?=BASEURL?>view/assets/blog.css">
         <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://g.tbcdn.cn/??kissy/k/1.3.2/kissy-min.js"></script>
+        <script src="http://g.assets.daily.taobao.net/ju/zcom/zcom.js"></script>
     </head>
     <body>
         <header>

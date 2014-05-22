@@ -148,10 +148,8 @@ h6:hover a.anchor {
   display: inline;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 18px;
-  height: auto;
   line-height: 27px;
   text-decoration: underline solid #508b88;
-  width: auto;
 }
 .mardown a.absent {
   color: #c00;
