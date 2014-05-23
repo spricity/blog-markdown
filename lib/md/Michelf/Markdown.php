@@ -40,7 +40,7 @@ class Markdown implements MarkdownInterface {
 		# create the parser it not already set
 		if (!$parser)
 			$parser = new $parser_class;
-		
+
 
 		# Transform text using parser.
 		return $parser->transform($text);
@@ -72,7 +72,7 @@ class Markdown implements MarkdownInterface {
 	protected $nested_url_parenthesis_re;
 
 	# Table of hash values for escaped characters:
-	protected $escape_chars = '\`*_{}[]()>#+-.!';
+	protected $escape_chars = '\`*_{}[]()>#+-.!~';
 	protected $escape_chars_re;
 
 
@@ -163,7 +163,9 @@ class Markdown implements MarkdownInterface {
 		$text = preg_replace('/^[ ]+$/m', '', $text);
 
 		# Run document gamut methods.
+	// dbg($this->document_gamut);
 		foreach ($this->document_gamut as $method => $priority) {
+		// dbg($method);
 			$text = $this->$method($text);
 		}
 
@@ -382,7 +384,10 @@ class Markdown implements MarkdownInterface {
 	#
 		# Swap back any tag hash found in $text so we do not have to `unhash`
 		# multiple times at the end.
-		$text = $this->unhash($text);
+		if($boundary === 'H'){
+			$text = htmlspecialchars_decode($text);
+		}
+			$text = $this->unhash($text);
 
 		# Then hash the block.
 		static $i = 0;
@@ -436,7 +441,6 @@ class Markdown implements MarkdownInterface {
 		foreach ($this->block_gamut as $method => $priority) {
 			$text = $this->$method($text);
 		}
-
 		# Finally form paragraph and restore hashed blocks.
 		$text = $this->formParagraphs($text);
 
@@ -457,7 +461,7 @@ class Markdown implements MarkdownInterface {
 				[ ]*		# Tailing spaces
 				$			# End of line.
 			}mx',
-			"\n".$this->hashBlock("<hr$this->empty_element_suffix")."\n",
+			"\n".$this->hashBlock("<hr class='markdown'$this->empty_element_suffix")."\n",
 			$text);
 	}
 
@@ -504,7 +508,7 @@ class Markdown implements MarkdownInterface {
 			array(&$this, '_doHardBreaks_callback'), $text);
 	}
 	protected function _doHardBreaks_callback($matches) {
-		return $this->hashPart("<br$this->empty_element_suffix\n");
+		return $this->hashPart("<br$this->empty_element_suffix class='markdown'\n");
 	}
 
 
@@ -596,7 +600,7 @@ class Markdown implements MarkdownInterface {
 			$url = $this->urls[$link_id];
 			$url = $this->encodeAttribute($url);
 
-			$result = "<a href=\"$url\"";
+			$result = "<a class='markdown' href=\"$url\"";
 			if ( isset( $this->titles[$link_id] ) ) {
 				$title = $this->titles[$link_id];
 				$title = $this->encodeAttribute($title);
@@ -620,7 +624,7 @@ class Markdown implements MarkdownInterface {
 
 		$url = $this->encodeAttribute($url);
 
-		$result = "<a href=\"$url\"";
+		$result = "<a class='markdown' href=\"$url\"";
 		if (isset($title)) {
 			$title = $this->encodeAttribute($title);
 			$result .=  " title=\"$title\"";
@@ -700,7 +704,7 @@ class Markdown implements MarkdownInterface {
 		$alt_text = $this->encodeAttribute($alt_text);
 		if (isset($this->urls[$link_id])) {
 			$url = $this->encodeAttribute($this->urls[$link_id]);
-			$result = "<img src=\"$url\" alt=\"$alt_text\"";
+			$result = "<img class='markdown' src=\"$url\" alt=\"$alt_text\"";
 			if (isset($this->titles[$link_id])) {
 				$title = $this->titles[$link_id];
 				$title = $this->encodeAttribute($title);
@@ -724,7 +728,7 @@ class Markdown implements MarkdownInterface {
 
 		$alt_text = $this->encodeAttribute($alt_text);
 		$url = $this->encodeAttribute($url);
-		$result = "<img src=\"$url\" alt=\"$alt_text\"";
+		$result = "<img class='markdown' src=\"$url\" alt=\"$alt_text\"";
 		if (isset($title)) {
 			$title = $this->encodeAttribute($title);
 			$result .=  " title=\"$title\""; # $title already quoted
@@ -762,7 +766,6 @@ class Markdown implements MarkdownInterface {
 				\n+
 			}xm',
 			array(&$this, '_doHeaders_callback_atx'), $text);
-
 		return $text;
 	}
 	protected function _doHeaders_callback_setext($matches) {
@@ -771,12 +774,12 @@ class Markdown implements MarkdownInterface {
 			return $matches[0];
 
 		$level = $matches[2]{0} == '=' ? 1 : 2;
-		$block = "<h$level>".$this->runSpanGamut($matches[1])."</h$level>";
+		$block = "<h$level class='markdown'>".$this->runSpanGamut($matches[1])."</h$level>";
 		return "\n" . $this->hashBlock($block) . "\n\n";
 	}
 	protected function _doHeaders_callback_atx($matches) {
 		$level = strlen($matches[1]);
-		$block = "<h$level>".$this->runSpanGamut($matches[2])."</h$level>";
+		$block = "<h$level class='markdown'>".$this->runSpanGamut($matches[2])."</h$level>";
 		return "\n" . $this->hashBlock($block) . "\n\n";
 	}
 
@@ -861,7 +864,7 @@ class Markdown implements MarkdownInterface {
 		$list .= "\n";
 		$result = $this->processListItems($list, $marker_any_re);
 
-		$result = $this->hashBlock("<$list_type>\n" . $result . "</$list_type>");
+		$result = $this->hashBlock("<$list_type class='markdown'>\n" . $result . "</$list_type>");
 		return "\n". $result ."\n\n";
 	}
 
@@ -934,7 +937,7 @@ class Markdown implements MarkdownInterface {
 			$item = $this->runSpanGamut($item);
 		}
 
-		return "<li>" . $item . "</li>\n";
+		return "<li class='markdown'>" . $item . "</li>\n";
 	}
 
 
@@ -965,17 +968,24 @@ class Markdown implements MarkdownInterface {
 		# trim leading newlines and trailing newlines
 		$codeblock = preg_replace('/\A\n+|\n+\z/', '', $codeblock);
 
-		$codeblock = "<pre><code>$codeblock\n</code></pre>";
+		$codeblock = "<pre class='markdown'><code>$codeblock\n</code></pre>";
 		return "\n\n".$this->hashBlock($codeblock)."\n\n";
 	}
 
+	protected function makeHTMLSpan($code) {
+	#
+	# Create a code span markup for $code. Called from handleSpanToken.
+	#
+		$code = htmlspecialchars(trim($code), ENT_NOQUOTES);
+		return $this->hashPart($code, 'H');
+	}
 
 	protected function makeCodeSpan($code) {
 	#
 	# Create a code span markup for $code. Called from handleSpanToken.
 	#
 		$code = htmlspecialchars(trim($code), ENT_NOQUOTES);
-		return $this->hashPart("<code>$code</code>");
+		return $this->hashPart("<code class='markdown'>$code</code>");
 	}
 
 
@@ -1059,7 +1069,7 @@ class Markdown implements MarkdownInterface {
 					array_shift($token_stack);
 					$span = array_shift($text_stack);
 					$span = $this->runSpanGamut($span);
-					$span = "<strong><em>$span</em></strong>";
+					$span = "<strong class='markdown'><em class='markdown'>$span</em></strong>";
 					$text_stack[0] .= $this->hashPart($span);
 					$em = '';
 					$strong = '';
@@ -1070,7 +1080,7 @@ class Markdown implements MarkdownInterface {
 					$tag = $token_len == 2 ? "strong" : "em";
 					$span = $text_stack[0];
 					$span = $this->runSpanGamut($span);
-					$span = "<$tag>$span</$tag>";
+					$span = "<$tag class='markdown'>$span</$tag>";
 					$text_stack[0] = $this->hashPart($span);
 					$$tag = ''; # $$tag stands for $em or $strong
 				}
@@ -1084,7 +1094,7 @@ class Markdown implements MarkdownInterface {
 						$tag = strlen($shifted_token) == 2 ? "strong" : "em";
 						$span = array_shift($text_stack);
 						$span = $this->runSpanGamut($span);
-						$span = "<$tag>$span</$tag>";
+						$span = "<$tag class='markdown'>$span</$tag>";
 						$text_stack[0] .= $this->hashPart($span);
 						$$tag = ''; # $$tag stands for $em or $strong
 					}
@@ -1108,7 +1118,7 @@ class Markdown implements MarkdownInterface {
 					array_shift($token_stack);
 					$span = array_shift($text_stack);
 					$span = $this->runSpanGamut($span);
-					$span = "<strong>$span</strong>";
+					$span = "<strong class='markdown'>$span</strong>";
 					$text_stack[0] .= $this->hashPart($span);
 					$strong = '';
 				} else {
@@ -1124,7 +1134,7 @@ class Markdown implements MarkdownInterface {
 						array_shift($token_stack);
 						$span = array_shift($text_stack);
 						$span = $this->runSpanGamut($span);
-						$span = "<em>$span</em>";
+						$span = "<em class='markdown'>$span</em>";
 						$text_stack[0] .= $this->hashPart($span);
 						$em = '';
 					} else {
@@ -1168,7 +1178,7 @@ class Markdown implements MarkdownInterface {
 		$bq = preg_replace_callback('{(\s*<pre>.+?</pre>)}sx',
 			array(&$this, '_doBlockQuotes_callback2'), $bq);
 
-		return "\n". $this->hashBlock("<blockquote>\n$bq\n</blockquote>")."\n\n";
+		return "\n". $this->hashBlock("<blockquote class='markdown'>\n$bq\n</blockquote>")."\n\n";
 	}
 	protected function _doBlockQuotes_callback2($matches) {
 		$pre = $matches[1];
@@ -1183,10 +1193,10 @@ class Markdown implements MarkdownInterface {
 	#		$text - string to process with html <p> tags
 	#
 		# Strip leading and trailing lines:
+// dbg($text);
 		$text = preg_replace('/\A\n+|\n+\z/', '', $text);
 
 		$grafs = preg_split('/\n{2,}/', $text, -1, PREG_SPLIT_NO_EMPTY);
-
 		#
 		# Wrap <p> tags and unhashify HTML blocks
 		#
@@ -1194,7 +1204,7 @@ class Markdown implements MarkdownInterface {
 			if (!preg_match('/^B\x1A[0-9]+B$/', $value)) {
 				# Is a paragraph.
 				$value = $this->runSpanGamut($value);
-				$value = preg_replace('/^([ ]*)/', "<p>", $value);
+				$value = preg_replace('/^([ ]*)/', "<p class='markdown'>", $value);
 				$value .= "</p>";
 				$grafs[$key] = $this->unhash($value);
 			}
@@ -1310,12 +1320,12 @@ class Markdown implements MarkdownInterface {
 	protected function _doAutoLinks_tel_callback($matches) {
 		$url = $this->encodeAttribute($matches[1]);
 		$tel = $this->encodeAttribute($matches[2]);
-		$link = "<a href=\"$url\">$tel</a>";
+		$link = "<a href=\"$url\" class='markdown'>$tel</a>";
 		return $this->hashPart($link);
 	}
 	protected function _doAutoLinks_url_callback($matches) {
 		$url = $this->encodeAttribute($matches[1]);
-		$link = "<a href=\"$url\">$url</a>";
+		$link = "<a href=\"$url\" class='markdown'>$url</a>";
 		return $this->hashPart($link);
 	}
 	protected function _doAutoLinks_email_callback($matches) {
@@ -1360,7 +1370,7 @@ class Markdown implements MarkdownInterface {
 
 		$addr = implode('', $chars);
 		$text = implode('', array_slice($chars, 7)); # text without `mailto:`
-		$addr = "<a href=\"$addr\">$text</a>";
+		$addr = "<a href=\"$addr\" class='markdown'>$text</a>";
 
 		return $addr;
 	}
@@ -1379,6 +1389,9 @@ class Markdown implements MarkdownInterface {
 				|
 					(?<![`\\\\])
 					`+						# code span marker
+				|
+					(?<![~\\\\])
+					~+						# code span marker
 			'.( $this->no_markup ? '' : '
 				|
 					<!--    .*?     -->		# comment
@@ -1406,7 +1419,6 @@ class Markdown implements MarkdownInterface {
 			# Each token is then passed to handleSpanToken.
 			#
 			$parts = preg_split($span_re, $str, 2, PREG_SPLIT_DELIM_CAPTURE);
-
 			# Create token from text preceding tag.
 			if ($parts[0] != "") {
 				$output .= $parts[0];
@@ -1442,6 +1454,16 @@ class Markdown implements MarkdownInterface {
 					$str = $matches[2];
 					$codespan = $this->makeCodeSpan($matches[1]);
 					return $this->hashPart($codespan);
+				}
+				return $token; // return as text since no ending marker found.
+			case "~":
+				# Search for end marker in remaining text.
+				if (preg_match('/^(.*?[^~])'.preg_quote($token).'(?!~)(.*)$/sm',
+					$str, $matches))
+				{
+					$str = $matches[2];
+					$codespan = $this->makeHTMLSpan($matches[1]);
+					return $this->hashPart($codespan, 'H');
 				}
 				return $token; // return as text since no ending marker found.
 			default:
@@ -1510,6 +1532,8 @@ class Markdown implements MarkdownInterface {
 	#
 	# Swap back in all the tags hashed by _HashHTMLBlocks.
 	#
+		// echo $text;
+		// echo '----------\n';
 		return preg_replace_callback('/(.)\x1A[0-9]+\1/',
 			array(&$this, '_unhash_callback'), $text);
 	}
@@ -1867,6 +1891,12 @@ abstract class _MarkdownExtra_TmpImpl extends \Michelf\Markdown {
 					# code blocks but it should also be kept outside of the
 					# "if not in span" condition adding backticks to the parser
 					`+
+				|
+					# Code span marker
+					# Note, this regex needs to go after backtick fenced
+					# code blocks but it should also be kept outside of the
+					# "if not in span" condition adding backticks to the parser
+					~+
 				)
 			}xs';
 
@@ -1945,6 +1975,25 @@ abstract class _MarkdownExtra_TmpImpl extends \Michelf\Markdown {
 				# Find corresponding end marker.
 				$tag_re = preg_quote($tag);
 				if (preg_match('{^(?>.+?|\n(?!\n))*?(?<!`)'.$tag_re.'(?!`)}',
+					$text, $matches))
+				{
+					# End marker found: pass text unchanged until marker.
+					$parsed .= $tag . $matches[0];
+					$text = substr($text, strlen($matches[0]));
+				}
+				else {
+					# Unmatched marker: just skip it.
+					$parsed .= $tag;
+				}
+			}
+			#
+			# Check for: Code span marker
+			# Note: need to check this after backtick fenced code blocks
+			#
+			else if ($tag{0} == "~") {
+				# Find corresponding end marker.
+				$tag_re = preg_quote($tag);
+				if (preg_match('{^(?>.+?|\n(?!\n))*?(?<!~)'.$tag_re.'(?!~)}',
 					$text, $matches))
 				{
 					# End marker found: pass text unchanged until marker.
@@ -2293,7 +2342,7 @@ abstract class _MarkdownExtra_TmpImpl extends \Michelf\Markdown {
 			$url = $this->urls[$link_id];
 			$url = $this->encodeAttribute($url);
 
-			$result = "<a href=\"$url\"";
+			$result = "<a href=\"$url\" class='markdown'";
 			if ( isset( $this->titles[$link_id] ) ) {
 				$title = $this->titles[$link_id];
 				$title = $this->encodeAttribute($title);
@@ -2321,7 +2370,7 @@ abstract class _MarkdownExtra_TmpImpl extends \Michelf\Markdown {
 
 		$url = $this->encodeAttribute($url);
 
-		$result = "<a href=\"$url\"";
+		$result = "<a href=\"$url\" class='markdown'";
 		if (isset($title)) {
 			$title = $this->encodeAttribute($title);
 			$result .=  " title=\"$title\"";
@@ -2403,7 +2452,7 @@ abstract class _MarkdownExtra_TmpImpl extends \Michelf\Markdown {
 		$alt_text = $this->encodeAttribute($alt_text);
 		if (isset($this->urls[$link_id])) {
 			$url = $this->encodeAttribute($this->urls[$link_id]);
-			$result = "<img src=\"$url\" alt=\"$alt_text\"";
+			$result = "<img class='markdown' src=\"$url\" alt=\"$alt_text\"";
 			if (isset($this->titles[$link_id])) {
 				$title = $this->titles[$link_id];
 				$title = $this->encodeAttribute($title);
@@ -2430,7 +2479,7 @@ abstract class _MarkdownExtra_TmpImpl extends \Michelf\Markdown {
 
 		$alt_text = $this->encodeAttribute($alt_text);
 		$url = $this->encodeAttribute($url);
-		$result = "<img src=\"$url\" alt=\"$alt_text\"";
+		$result = "<img class='markdown' src=\"$url\" alt=\"$alt_text\"";
 		if (isset($title)) {
 			$title = $this->encodeAttribute($title);
 			$result .=  " title=\"$title\""; # $title already quoted
@@ -2487,13 +2536,13 @@ abstract class _MarkdownExtra_TmpImpl extends \Michelf\Markdown {
 			return $matches[0];
 		$level = $matches[3]{0} == '=' ? 1 : 2;
 		$attr  = $this->doExtraAttributes("h$level", $dummy =& $matches[2]);
-		$block = "<h$level$attr>".$this->runSpanGamut($matches[1])."</h$level>";
+		$block = "<h$level$attr class='markdown'>".$this->runSpanGamut($matches[1])."</h$level>";
 		return "\n" . $this->hashBlock($block) . "\n\n";
 	}
 	protected function _doHeaders_callback_atx($matches) {
 		$level = strlen($matches[1]);
 		$attr  = $this->doExtraAttributes("h$level", $dummy =& $matches[3]);
-		$block = "<h$level$attr>".$this->runSpanGamut($matches[2])."</h$level>";
+		$block = "<h$level$attr class='markdown'>".$this->runSpanGamut($matches[2])."</h$level>";
 		return "\n" . $this->hashBlock($block) . "\n\n";
 	}
 
@@ -2556,7 +2605,6 @@ abstract class _MarkdownExtra_TmpImpl extends \Michelf\Markdown {
 				(?=\n|\Z)					# Stop at final double newline.
 			}xm',
 			array(&$this, '_DoTable_callback'), $text);
-
 		return $text;
 	}
 	protected function _doTable_leadingPipe_callback($matches) {
@@ -2608,18 +2656,18 @@ abstract class _MarkdownExtra_TmpImpl extends \Michelf\Markdown {
 		$attr       = array_pad($attr, $col_count, '');
 
 		# Write column headers.
-		$text = "<table>\n";
-		$text .= "<thead>\n";
-		$text .= "<tr>\n";
+		$text = "<table class='markdown'>\n";
+		$text .= "<thead class='markdown'>\n";
+		$text .= "<tr class='markdown'>\n";
 		foreach ($headers as $n => $header)
-			$text .= "  <th$attr[$n]>".$this->runSpanGamut(trim($header))."</th>\n";
+			$text .= "  <th$attr[$n] class='markdown'>".$this->runSpanGamut(trim($header))."</th>\n";
 		$text .= "</tr>\n";
 		$text .= "</thead>\n";
 
 		# Split content by row.
 		$rows = explode("\n", trim($content, "\n"));
 
-		$text .= "<tbody>\n";
+		$text .= "<tbody class='markdown'>\n";
 		foreach ($rows as $row) {
 			# Parsing span elements, including code spans, character escapes,
 			# and inline HTML tags, so that pipes inside those gets ignored.
@@ -2629,9 +2677,9 @@ abstract class _MarkdownExtra_TmpImpl extends \Michelf\Markdown {
 			$row_cells = preg_split('/ *[|] */', $row, $col_count);
 			$row_cells = array_pad($row_cells, $col_count, '');
 
-			$text .= "<tr>\n";
+			$text .= "<tr class='markdown'>\n";
 			foreach ($row_cells as $n => $cell)
-				$text .= "  <td$attr[$n]>".$this->runSpanGamut(trim($cell))."</td>\n";
+				$text .= "  <td$attr[$n] class='markdown'>".$this->runSpanGamut(trim($cell))."</td>\n";
 			$text .= "</tr>\n";
 		}
 		$text .= "</tbody>\n";
@@ -2690,7 +2738,7 @@ abstract class _MarkdownExtra_TmpImpl extends \Michelf\Markdown {
 		# Turn double returns into triple returns, so that we can make a
 		# paragraph for the last item in a list, if necessary:
 		$result = trim($this->processDefListItems($list));
-		$result = "<dl>\n" . $result . "\n</dl>";
+		$result = "<dl class='markdown'>\n" . $result . "\n</dl>";
 		return $this->hashBlock($result) . "\n\n";
 	}
 
@@ -2743,7 +2791,7 @@ abstract class _MarkdownExtra_TmpImpl extends \Michelf\Markdown {
 		$text = '';
 		foreach ($terms as $term) {
 			$term = $this->runSpanGamut(trim($term));
-			$text .= "\n<dt>" . $term . "</dt>";
+			$text .= "\n<dt class='markdown'>" . $term . "</dt>";
 		}
 		return $text . "\n";
 	}
@@ -2763,7 +2811,7 @@ abstract class _MarkdownExtra_TmpImpl extends \Michelf\Markdown {
 			$def = $this->runSpanGamut($this->outdent($def));
 		}
 
-		return "\n<dd>" . $def . "</dd>\n";
+		return "\n<dd class='markdown'>" . $def . "</dd>\n";
 	}
 
 
@@ -2803,7 +2851,6 @@ abstract class _MarkdownExtra_TmpImpl extends \Michelf\Markdown {
 				\1 [ ]* (?= \n )
 			}xm',
 			array(&$this, '_doFencedCodeBlocks_callback'), $text);
-
 		return $text;
 	}
 	protected function _doFencedCodeBlocks_callback($matches) {
@@ -2823,6 +2870,8 @@ abstract class _MarkdownExtra_TmpImpl extends \Michelf\Markdown {
 		}
 		$pre_attr_str  = $this->code_attr_on_pre ? $attr_str : '';
 		$code_attr_str = $this->code_attr_on_pre ? '' : $attr_str;
+		$pre_attr_str .= ' class="markdown"';
+		// $code_attr_str .= ' class="markdown"';
 		$codeblock  = "<pre$pre_attr_str><code$code_attr_str>$codeblock</code></pre>";
 
 		return "\n\n".$this->hashBlock($codeblock)."\n\n";
@@ -2869,21 +2918,21 @@ abstract class _MarkdownExtra_TmpImpl extends \Michelf\Markdown {
 		#
 		foreach ($grafs as $key => $value) {
 			$value = trim($this->runSpanGamut($value));
-
 			# Check if this should be enclosed in a paragraph.
 			# Clean tag hashes & block tag hashes are left alone.
 			$is_p = !preg_match('/^B\x1A[0-9]+B|^C\x1A[0-9]+C$/', $value);
 
 			if ($is_p) {
-				$value = "<p>$value</p>";
+				$value = "<p class='markdown'>$value</p>";
 			}
 			$grafs[$key] = $value;
 		}
 
+
 		# Join grafs in one text, then unhash HTML tags.
 		$text = implode("\n\n", $grafs);
-
 		# Finish by removing any tag hashes still present in $text.
+// print_r($this->html_hashes);
 		$text = $this->unhash($text);
 
 		return $text;
@@ -2947,8 +2996,8 @@ abstract class _MarkdownExtra_TmpImpl extends \Michelf\Markdown {
 
 		if (!empty($this->footnotes_ordered)) {
 			$text .= "\n\n";
-			$text .= "<div class=\"footnotes\">\n";
-			$text .= "<hr". $this->empty_element_suffix ."\n";
+			$text .= "<div class=\"footnotes markdown\">\n";
+			$text .= "<hr class='markdown'". $this->empty_element_suffix ."\n";
 			$text .= "<ol>\n\n";
 
 			$attr = "";
@@ -2992,7 +3041,7 @@ abstract class _MarkdownExtra_TmpImpl extends \Michelf\Markdown {
 					$footnote .= "\n\n<p>$backlink</p>";
 				}
 
-				$text .= "<li id=\"fn:$note_id\">\n";
+				$text .= "<li class='markdown' id=\"fn:$note_id\">\n";
 				$text .= $footnote . "\n";
 				$text .= "</li>\n\n";
 			}
@@ -3036,8 +3085,8 @@ abstract class _MarkdownExtra_TmpImpl extends \Michelf\Markdown {
 			$node_id = $this->encodeAttribute($node_id);
 
 			return
-				"<sup id=\"fnref$ref_count_mark:$node_id\">".
-				"<a href=\"#fn:$node_id\"$attr>$num</a>".
+				"<sup class='markdown' id=\"fnref$ref_count_mark:$node_id\">".
+				"<a class='markdown' href=\"#fn:$node_id\"$attr>$num</a>".
 				"</sup>";
 		}
 

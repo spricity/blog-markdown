@@ -2,29 +2,31 @@
 	word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-.mardown h1, h2, h3, h4, h5, h6{
-	background-color: #FFF;
-	clear: both;
-	color: #18AD78;
-	display: block;
-	font-weight: bold;
-	max-width: 85%;
-	margin:20px 0 10px;
-	-webkit-font-smoothing:antialiased;
-	cursor:text;
-	position:relative;
-	border-bottom-left-radius: 10px;
-	border-left: 1px solid #2DCED4;
-	padding-left: 5px;
-	&:hover{
-		a.anchor, a.anchor, a.anchor, a.anchor, a.anchor,a.anchor
-		{
-			background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
-			text-decoration:none;
+h1, h2, h3, h4, h5, h6{
+	&.markdown{
+		background-color: #FFF;
+		clear: both;
+		color: #18AD78;
+		display: block;
+		font-weight: bold;
+		max-width: 85%;
+		margin:20px 0 10px;
+		-webkit-font-smoothing:antialiased;
+		cursor:text;
+		position:relative;
+		border-bottom-left-radius: 10px;
+		border-left: 1px solid #2DCED4;
+		padding-left: 5px;
+		&:hover{
+			a.anchor, a.anchor, a.anchor, a.anchor, a.anchor,a.anchor
+			{
+				background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+				text-decoration:none;
+			}
 		}
 	}
 }
-.mardown h1{
+h1.markdown{
 	font-size: 28px;
 	line-height: 28px;
 	margin: 20px 0;
@@ -33,7 +35,7 @@
 	border-bottom-left-radius: 0;
 	padding-left: 10px;
 }
-.mardown h2{
+h2.markdown{
 	line-height: 24px;
 	font-size: 24px;
 	max-width: 85%;
@@ -41,27 +43,27 @@
 	padding-bottom: 5px;
 	border-bottom:1px solid #ccc;
 }
-.mardown h3
+h3.markdown
 {
 	font-size:22px;
 }
 
-.mardown h4
+h4.markdown
 {
 	font-size:20px;
 }
 
-.mardown h5
+h5.markdown
 {
 	font-size:19px;
 }
 
-.mardown h6
+h6.markdown
 {
 	color:#777;
 	font-size:19px;
 }
-.mardown p{
+p.markdown{
 	background-color: #FFF;
 	color: #808080;
 	display: block;
@@ -69,7 +71,7 @@
 	font-size: 18px;
 	line-height: 27px;
 }
-.mardown p.tip{
+p.tip{
 	background-color: #FCFFFA;
 	border-bottom-color: #59B200;
 	border-bottom-style: dotted;
@@ -87,7 +89,7 @@
 	padding: 14px 12px;
 	margin: 18px 0;
 }
-.mardown blockquote{
+blockquote.markdown{
 	color: rgb(74, 126, 123);
 	font-style: italic;
 	font-size: 14px;
@@ -105,14 +107,16 @@
 	font-style: italic;
 	line-height: 27px;
 	padding: 14px 12px;
-	p{
+	border-left: none;
+	border-rigth: none;
+	p.markdown{
 		color: rgb(74, 126, 123);
 		font-style: italic;
 		font-size: 14px;
 		background-color: #FCFFFA;
 	}
 }
-.mardown a{
+a.markdown{
 	color: #508B88;
 	cursor: auto;
 	display: inline;
@@ -138,13 +142,13 @@
 }
 
 
-.mardown pre{
+pre.prettyprint{
 	font-family: 'Source Code Pro', monospace; font-size: 15px; white-space: pre-wrap; word-wrap: break-word; color: white; background-color: rgb(68, 68, 68); padding: 1em; line-height: 1.3; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px;
 }
-.mardown code{
+code.markdown{
 	font-family: 'Source Code Pro', monospace; font-size: 1em;
 }
-.mardown code span.note{
+code.markdown span.note{
 	color: rgb(174, 174, 174); font-style: italic;
 }
 /* Pretty printing styles. Used with prettify.js. */
@@ -171,25 +175,27 @@
 .mardown pre.prettyprint.small {
   padding: 0.5em;
 }
-.mardown pre .str, .mardown code .str { color: #65B042; } /* string  - green */
-.mardown pre .kwd, .mardown code .kwd { color: #E28964; } /* keyword - dark pink */
-.mardown pre .com, .mardown code .com { color: #AEAEAE; font-style: italic; } /* comment - gray */
-.mardown pre .typ, .mardown code .typ { color: #89bdff; } /* type - light blue */
-.mardown pre .lit, .mardown code .lit { color: #3387CC; } /* literal - blue */
-.mardown pre .pun, .mardown code .pun { color: #fff; } /* punctuation - white */
-.mardown pre .pln, .mardown code .pln { color: #fff; } /* plaintext - white */
-.mardown pre .tag, .mardown code .tag { color: #89bdff; } /* html/xml tag    - light blue */
-.mardown pre .atn, .mardown code .atn { color: #bdb76b; } /* html/xml attribute name  - khaki */
-.mardown pre .atv, .mardown code .atv { color: #65B042; } /* html/xml attribute value - green */
-.mardown pre .dec, .mardown code .dec { color: #3387CC; } /* decimal - blue */
+.mardown pre.markdown .str, .mardown code .str { color: #65B042; } /* string  - green */
+.mardown pre.markdown .kwd, .mardown code .kwd { color: #E28964; } /* keyword - dark pink */
+.mardown pre.markdown .com, .mardown code .com { color: #AEAEAE; font-style: italic; } /* comment - gray */
+.mardown pre.markdown .typ, .mardown code .typ { color: #89bdff; } /* type - light blue */
+.mardown pre.markdown .lit, .mardown code .lit { color: #3387CC; } /* literal - blue */
+.mardown pre.markdown .pun, .mardown code .pun { color: #fff; } /* punctuation - white */
+.mardown pre.markdown .pln, .mardown code .pln { color: #fff; } /* plaintext - white */
+.mardown pre.markdown .tag, .mardown code .tag { color: #89bdff; } /* html/xml tag    - light blue */
+.mardown pre.markdown .atn, .mardown code .atn { color: #bdb76b; } /* html/xml attribute name  - khaki */
+.mardown pre.markdown .atv, .mardown code .atv { color: #65B042; } /* html/xml attribute value - green */
+.mardown pre.markdown .dec, .mardown code .dec { color: #3387CC; } /* decimal - blue */
 
 .mardown{
 	p,blockquote,ul,ol,dl,li,table,pre{
-		margin:15px 0;
+		&.markdown{
+			margin:15px 0;
+		}
 	}
 }
 
-.mardown hr
+.mardown hr.markdown
 {
 	// background:transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
 	// border:0 none;
@@ -201,12 +207,12 @@
 	max-width: 85%;
 }
 .mardown{
-	li p.first
+	li.markdown p.first
 	{
 		display:inline-block;
 	}
 
-	li
+	li.markdown
 	{
 		margin:0;
 		background-color: #FFF;
@@ -217,34 +223,34 @@
 		line-height: 27px;
 	}
 
-	ul,ol
+	ul.markdown,ol.markdown
 	{
 		padding-left:55px;
 	}
-	ul{
+	ul.markdown{
 		display: block;
 		list-style-image: none;
 		list-style-position: outside;
 		list-style-type: disc;
-		li{
+		li.markdown{
 			list-style-image: none;
 			list-style-position: outside;
 			list-style-type: disc !important;
 		}
 	}
-	ol{
+	ol.markdown{
 		display: block;
 		list-style-image: none;
 		list-style-position: outside;
 		list-style-type: decimal;
-		li{
+		li.markdown{
 			list-style-image: none;
 			list-style-position: outside;
 			list-style-type: decimal !important;
 		}
 	}
 
-	dl dt
+	dl.markdown dt.markdown
 	{
 		font-size:14px;
 		font-weight:700;
@@ -253,7 +259,7 @@
 		margin:15px 0 5px;
 	}
 
-	dl dd
+	dl.markdown dd.markdown
 	{
 		margin:0 0 15px;
 		padding:0 15px;
@@ -266,13 +272,13 @@
 	// 	color:#777;
 	// }
 
-	table
+	table.markdown
 	{
 		padding:0;
 		border-collapse:collapse;
 	}
 
-	table tr
+	table.markdown tr.markdown
 	{
 		border-top:1px solid #ccc;
 		background-color:#FFF;
@@ -280,12 +286,12 @@
 		padding:0;
 	}
 
-	table tr:nth-child(2n)
+	table.markdown tr:nth-child(2n)
 	{
 		background-color:#f8f8f8;
 	}
 
-	table tr th
+	table.markdown tr.markdown th.markdown
 	{
 		font-weight:700;
 		border:1px solid #ccc;
@@ -294,11 +300,11 @@
 		background-color: #FFF;
 		color: #606060;
 		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-		font-size: 18px;
-		line-height: 27px;
+		font-size: 15px;
+		// line-height: 27px;
 	}
 
-	table tr td
+	table.markdown tr.markdown td.markdown
 	{
 		border:1px solid #ccc;
 		margin:0;
@@ -306,11 +312,11 @@
 		background-color: #FFF;
 		color: #808080;
 		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-		font-size: 18px;
-		line-height: 27px;
+		// font-size: 18px;
+		// line-height: 27px;
 	}
 
-	img
+	img.markdown
 	{
 		max-width:100%;
 	}
@@ -403,17 +409,19 @@
 		text-align:right;
 	}
 
-	code,tt
+	code.markdown,tt.markdown
 	{
 		margin:0 2px;
-		padding:0 5px;
+		padding:3px 5px;
 		white-space:nowrap;
 		border:1px solid #eaeaea;
-		background-color:#f8f8f8;
-		border-radius:3px;
+		background-color: #2D2D2D;
+		border-radius: 3px;
+		color: #F99157;
+		font-size: 14px;
 	}
 
-	pre code
+	pre.markdown code.markdown
 	{
 		margin:0;
 		padding:0;
@@ -422,7 +430,7 @@
 		background:transparent;
 	}
 
-	pre code,pre tt
+	pre.markdown code.markdown,pre.markdown tt.markdown
 	{
 		background-color:transparent;
 		border:none;
@@ -430,7 +438,9 @@
 
 	h1 tt,h1 code,h2 tt,h2 code,h3 tt,h3 code,h4 tt,h4 code,h5 tt,h5 code,h6 tt,h6 code
 	{
-		font-size:inherit;
+		&.markdown{
+			font-size:inherit;
+		}
 	}
 
 	body > h2:first-child,body > h1:first-child,body > h1:first-child + h2,body > h3:first-child,body > h4:first-child,body > h5:first-child,body > h6:first-child,a:first-child h1,a:first-child h2,a:first-child h3,a:first-child h4,a:first-child h5,a:first-child h6

@@ -4,12 +4,12 @@
   -webkit-line-break: after-white-space;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-.mardown h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1.markdown,
+h2.markdown,
+h3.markdown,
+h4.markdown,
+h5.markdown,
+h6.markdown {
   background-color: #FFF;
   clear: both;
   color: #18AD78;
@@ -24,46 +24,46 @@ h6 {
   border-left: 1px solid #2DCED4;
   padding-left: 5px;
 }
-.mardown h1:hover a.anchor,
-h2:hover a.anchor,
-h3:hover a.anchor,
-h4:hover a.anchor,
-h5:hover a.anchor,
-h6:hover a.anchor,
-.mardown h1:hover a.anchor,
-h2:hover a.anchor,
-h3:hover a.anchor,
-h4:hover a.anchor,
-h5:hover a.anchor,
-h6:hover a.anchor,
-.mardown h1:hover a.anchor,
-h2:hover a.anchor,
-h3:hover a.anchor,
-h4:hover a.anchor,
-h5:hover a.anchor,
-h6:hover a.anchor,
-.mardown h1:hover a.anchor,
-h2:hover a.anchor,
-h3:hover a.anchor,
-h4:hover a.anchor,
-h5:hover a.anchor,
-h6:hover a.anchor,
-.mardown h1:hover a.anchor,
-h2:hover a.anchor,
-h3:hover a.anchor,
-h4:hover a.anchor,
-h5:hover a.anchor,
-h6:hover a.anchor,
-.mardown h1:hover a.anchor,
-h2:hover a.anchor,
-h3:hover a.anchor,
-h4:hover a.anchor,
-h5:hover a.anchor,
-h6:hover a.anchor {
+h1.markdown:hover a.anchor,
+h2.markdown:hover a.anchor,
+h3.markdown:hover a.anchor,
+h4.markdown:hover a.anchor,
+h5.markdown:hover a.anchor,
+h6.markdown:hover a.anchor,
+h1.markdown:hover a.anchor,
+h2.markdown:hover a.anchor,
+h3.markdown:hover a.anchor,
+h4.markdown:hover a.anchor,
+h5.markdown:hover a.anchor,
+h6.markdown:hover a.anchor,
+h1.markdown:hover a.anchor,
+h2.markdown:hover a.anchor,
+h3.markdown:hover a.anchor,
+h4.markdown:hover a.anchor,
+h5.markdown:hover a.anchor,
+h6.markdown:hover a.anchor,
+h1.markdown:hover a.anchor,
+h2.markdown:hover a.anchor,
+h3.markdown:hover a.anchor,
+h4.markdown:hover a.anchor,
+h5.markdown:hover a.anchor,
+h6.markdown:hover a.anchor,
+h1.markdown:hover a.anchor,
+h2.markdown:hover a.anchor,
+h3.markdown:hover a.anchor,
+h4.markdown:hover a.anchor,
+h5.markdown:hover a.anchor,
+h6.markdown:hover a.anchor,
+h1.markdown:hover a.anchor,
+h2.markdown:hover a.anchor,
+h3.markdown:hover a.anchor,
+h4.markdown:hover a.anchor,
+h5.markdown:hover a.anchor,
+h6.markdown:hover a.anchor {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
   text-decoration: none;
 }
-.mardown h1 {
+h1.markdown {
   font-size: 28px;
   line-height: 28px;
   margin: 20px 0;
@@ -72,7 +72,7 @@ h6:hover a.anchor {
   border-bottom-left-radius: 0;
   padding-left: 10px;
 }
-.mardown h2 {
+h2.markdown {
   line-height: 24px;
   font-size: 24px;
   max-width: 85%;
@@ -80,20 +80,20 @@ h6:hover a.anchor {
   padding-bottom: 5px;
   border-bottom: 1px solid #ccc;
 }
-.mardown h3 {
+h3.markdown {
   font-size: 22px;
 }
-.mardown h4 {
+h4.markdown {
   font-size: 20px;
 }
-.mardown h5 {
+h5.markdown {
   font-size: 19px;
 }
-.mardown h6 {
+h6.markdown {
   color: #777;
   font-size: 19px;
 }
-.mardown p {
+p.markdown {
   background-color: #FFF;
   color: #808080;
   display: block;
@@ -101,7 +101,7 @@ h6:hover a.anchor {
   font-size: 18px;
   line-height: 27px;
 }
-.mardown p.tip {
+p.tip {
   background-color: #FCFFFA;
   border-bottom-color: #59B200;
   border-bottom-style: dotted;
@@ -119,7 +119,7 @@ h6:hover a.anchor {
   padding: 14px 12px;
   margin: 18px 0;
 }
-.mardown blockquote {
+blockquote.markdown {
   color: #4a7e7b;
   background-color: #FCFFFA;
   border-bottom-color: #59B200;
@@ -135,14 +135,16 @@ h6:hover a.anchor {
   font-style: italic;
   line-height: 27px;
   padding: 14px 12px;
+  border-left: none;
+  border-rigth: none;
 }
-.mardown blockquote p {
+blockquote.markdown p.markdown {
   color: #4a7e7b;
   font-style: italic;
   font-size: 14px;
   background-color: #FCFFFA;
 }
-.mardown a {
+a.markdown {
   color: #508B88;
   cursor: auto;
   display: inline;
@@ -151,10 +153,10 @@ h6:hover a.anchor {
   line-height: 27px;
   text-decoration: underline solid #508b88;
 }
-.mardown a.absent {
+a.markdown.absent {
   color: #c00;
 }
-.mardown a.anchor {
+a.markdown.anchor {
   display: block;
   padding-left: 30px;
   margin-left: -30px;
@@ -164,7 +166,7 @@ h6:hover a.anchor {
   left: 0;
   bottom: 0;
 }
-.mardown pre {
+pre.prettyprint {
   font-family: 'Source Code Pro', monospace;
   font-size: 15px;
   white-space: pre-wrap;
@@ -178,11 +180,11 @@ h6:hover a.anchor {
   border-bottom-right-radius: 2px;
   border-bottom-left-radius: 2px;
 }
-.mardown code {
+code.markdown {
   font-family: 'Source Code Pro', monospace;
   font-size: 1em;
 }
-.mardown code span.note {
+code.markdown span.note {
   color: #aeaeae;
   font-style: italic;
 }
@@ -210,82 +212,82 @@ h6:hover a.anchor {
 .mardown pre.prettyprint.small {
   padding: 0.5em;
 }
-.mardown pre .str,
+.mardown pre.markdown .str,
 .mardown code .str {
   color: #65B042;
 }
 /* string  - green */
-.mardown pre .kwd,
+.mardown pre.markdown .kwd,
 .mardown code .kwd {
   color: #E28964;
 }
 /* keyword - dark pink */
-.mardown pre .com,
+.mardown pre.markdown .com,
 .mardown code .com {
   color: #AEAEAE;
   font-style: italic;
 }
 /* comment - gray */
-.mardown pre .typ,
+.mardown pre.markdown .typ,
 .mardown code .typ {
   color: #89bdff;
 }
 /* type - light blue */
-.mardown pre .lit,
+.mardown pre.markdown .lit,
 .mardown code .lit {
   color: #3387CC;
 }
 /* literal - blue */
-.mardown pre .pun,
+.mardown pre.markdown .pun,
 .mardown code .pun {
   color: #fff;
 }
 /* punctuation - white */
-.mardown pre .pln,
+.mardown pre.markdown .pln,
 .mardown code .pln {
   color: #fff;
 }
 /* plaintext - white */
-.mardown pre .tag,
+.mardown pre.markdown .tag,
 .mardown code .tag {
   color: #89bdff;
 }
 /* html/xml tag    - light blue */
-.mardown pre .atn,
+.mardown pre.markdown .atn,
 .mardown code .atn {
   color: #bdb76b;
 }
 /* html/xml attribute name  - khaki */
-.mardown pre .atv,
+.mardown pre.markdown .atv,
 .mardown code .atv {
   color: #65B042;
 }
 /* html/xml attribute value - green */
-.mardown pre .dec,
+.mardown pre.markdown .dec,
 .mardown code .dec {
   color: #3387CC;
 }
 /* decimal - blue */
-.mardown p,
-.mardown blockquote,
-.mardown ul,
-.mardown ol,
-.mardown dl,
-.mardown li,
-.mardown table,
-.mardown pre {
+.mardown p.markdown,
+.mardown blockquote.markdown,
+.mardown ul.markdown,
+.mardown ol.markdown,
+.mardown dl.markdown,
+.mardown li.markdown,
+.mardown table.markdown,
+.mardown pre.markdown {
   margin: 15px 0;
 }
-.mardown hr {
+.mardown hr.markdown {
   border-top: 1px dashed #ccc;
   margin: 10px 0;
   padding: 0;
   max-width: 85%;
 }
-.mardown li p.first {
+.mardown li.markdown p.first {
   display: inline-block;
 }
-.mardown li {
+.mardown li.markdown {
   margin: 0;
   background-color: #FFF;
   color: #808080;
@@ -294,57 +296,57 @@ h6:hover a.anchor {
   font-size: 16px;
   line-height: 27px;
 }
-.mardown ul,
-.mardown ol {
+.mardown ul.markdown,
+.mardown ol.markdown {
   padding-left: 55px;
 }
-.mardown ul {
+.mardown ul.markdown {
   display: block;
   list-style-image: none;
   list-style-position: outside;
   list-style-type: disc;
 }
-.mardown ul li {
+.mardown ul.markdown li.markdown {
   list-style-image: none;
   list-style-position: outside;
   list-style-type: disc !important;
 }
-.mardown ol {
+.mardown ol.markdown {
   display: block;
   list-style-image: none;
   list-style-position: outside;
   list-style-type: decimal;
 }
-.mardown ol li {
+.mardown ol.markdown li.markdown {
   list-style-image: none;
   list-style-position: outside;
   list-style-type: decimal !important;
 }
-.mardown dl dt {
+.mardown dl.markdown dt.markdown {
   font-size: 14px;
   font-weight: 700;
   font-style: italic;
   padding: 0;
   margin: 15px 0 5px;
 }
-.mardown dl dd {
+.mardown dl.markdown dd.markdown {
   margin: 0 0 15px;
   padding: 0 15px;
 }
-.mardown table {
+.mardown table.markdown {
   padding: 0;
   border-collapse: collapse;
 }
-.mardown table tr {
+.mardown table.markdown tr.markdown {
   border-top: 1px solid #ccc;
   background-color: #FFF;
   margin: 0;
   padding: 0;
 }
-.mardown table tr:nth-child(2n) {
+.mardown table.markdown tr:nth-child(2n) {
   background-color: #f8f8f8;
 }
-.mardown table tr th {
+.mardown table.markdown tr.markdown th.markdown {
   font-weight: 700;
   border: 1px solid #ccc;
   margin: 0;
@@ -352,20 +354,17 @@ h6:hover a.anchor {
   background-color: #FFF;
   color: #606060;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  line-height: 27px;
+  font-size: 15px;
 }
-.mardown table tr td {
+.mardown table.markdown tr.markdown td.markdown {
   border: 1px solid #ccc;
   margin: 0;
   padding: 6px 13px;
   background-color: #FFF;
   color: #808080;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  line-height: 27px;
 }
-.mardown img {
+.mardown img.markdown {
   max-width: 100%;
 }
 .mardown span.frame {
@@ -432,39 +431,41 @@ h6:hover a.anchor {
   margin: 13px auto 0;
   text-align: right;
 }
-.mardown code,
-.mardown tt {
+.mardown code.markdown,
+.mardown tt.markdown {
   margin: 0 2px;
-  padding: 0 5px;
+  padding: 3px 5px;
   white-space: nowrap;
   border: 1px solid #eaeaea;
-  background-color: #f8f8f8;
+  background-color: #2D2D2D;
   border-radius: 3px;
+  color: #F99157;
+  font-size: 14px;
 }
-.mardown pre code {
+.mardown pre.markdown code.markdown {
   margin: 0;
   padding: 0;
   white-space: pre;
   border: none;
   background: transparent;
 }
-.mardown pre code,
-.mardown pre tt {
+.mardown pre.markdown code.markdown,
+.mardown pre.markdown tt.markdown {
   background-color: transparent;
   border: none;
 }
-.mardown h1 tt,
-.mardown h1 code,
-.mardown h2 tt,
-.mardown h2 code,
-.mardown h3 tt,
-.mardown h3 code,
-.mardown h4 tt,
-.mardown h4 code,
-.mardown h5 tt,
-.mardown h5 code,
-.mardown h6 tt,
-.mardown h6 code {
+.mardown h1 tt.markdown,
+.mardown h1 code.markdown,
+.mardown h2 tt.markdown,
+.mardown h2 code.markdown,
+.mardown h3 tt.markdown,
+.mardown h3 code.markdown,
+.mardown h4 tt.markdown,
+.mardown h4 code.markdown,
+.mardown h5 tt.markdown,
+.mardown h5 code.markdown,
+.mardown h6 tt.markdown,
+.mardown h6 code.markdown {
   font-size: inherit;
 }
 .mardown body > h2:first-child,
