@@ -354,7 +354,6 @@ code.markdown span.note {
   background-color: #FFF;
   color: #606060;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 15px;
 }
 .mardown table.markdown tr.markdown td.markdown {
   border: 1px solid #ccc;
@@ -437,9 +436,9 @@ code.markdown span.note {
   padding: 3px 5px;
   white-space: nowrap;
   border: 1px solid #eaeaea;
-  background-color: #2D2D2D;
+  background-color: #FFF;
   border-radius: 3px;
-  color: #F99157;
+  color: #E46B28;
   font-size: 14px;
 }
 .mardown pre.markdown code.markdown {
