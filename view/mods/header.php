@@ -5,13 +5,8 @@
         <title><?if(isset($title))echo $title;else echo '终结者';?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="<?=BASEURL?>view/assets/blog.css">
-        <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-        <script src="http://g.tbcdn.cn/??kissy/k/1.3.2/kissy-min.js"></script>
-        <script src="http://g.assets.daily.taobao.net/ju/zcom/zcom.js"></script>
-        <script src="http://g.assets.daily.taobao.net/ju/zadmin/zadmin.js"></script>
-        <script src="http://g.tbcdn.cn/??ju/resource/1.0.8/mods/js/ko.js"></script>
-        <script src="http://g.tbcdn.cn/fi/bui/adapter-min.js"></script>
-        <link rel="stylesheet" href="http://g.assets.daily.taobao.net/ju/zadmin/zadmin.css" />
+        <link rel="stylesheet" href="http://g.assets.daily.taobao.net/ju/zadmin/1.0.0/zadmin.css" />
+		<script src="http://g.assets.daily.taobao.net/??kissy/k/1.3.2/kissy-min.js,fi/bui/adapter-min.js,ju/zadmin/1.0.0/js/dpl/ko.js,ju/zadmin/1.0.0/js/dpl/jquery-1.8.1.min.js,ju/zadmin/1.0.0/js/dpl/leftmenu2-min.js,ju/zadmin/1.0.0/js/dpl/topSlider-min.js,ju/zcom/1.0.0/zcom-min.js,ju/zadmin/1.0.0/zadmin-min.js"></script>
     </head>
     <body class="ju">
         <header>
