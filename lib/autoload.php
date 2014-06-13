@@ -57,3 +57,5 @@ if($config->DOC_DIR){
 }else{
     define('DIR_DOCS', BASEDIR.DS.'docs' );
 }
+
+define('SITE', $config->site ? $config->site : '');
