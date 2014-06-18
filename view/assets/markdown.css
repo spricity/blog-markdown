@@ -167,6 +167,7 @@ a.markdown.anchor {
   bottom: 0;
 }
 pre.prettyprint {
+  margin: 5px 0;
   font-family: 'Source Code Pro', monospace;
   font-size: 15px;
   white-space: pre-wrap;
@@ -565,3 +566,21 @@ body > :last-child
 }
 
 */
+.markdown-demo {
+  padding: 30px 25px;
+  width: 95%;
+  border: 1px solid #F3F3F3;
+  border-radius: 5px;
+  margin: 15px 0;
+  position: relative;
+}
+.markdown-demo:before {
+  position: absolute;
+  content: 'demo';
+  top: 0;
+  left: 0;
+  background: #00B5E5;
+  color: #fff;
+  padding: 2px 13px;
+  border-top-left-radius: 5px;
+}
